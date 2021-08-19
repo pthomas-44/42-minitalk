@@ -6,7 +6,7 @@
 /*   By: pthomas <pthomas@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:21:07 by pthomas           #+#    #+#             */
-/*   Updated: 2021/08/19 12:25:36 by pthomas          ###   ########lyon.fr   */
+/*   Updated: 2021/08/19 13:31:48 by pthomas          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@
 # include <signal.h>
 # include <stdbool.h>
 # include <math.h>
-
-/*** ~~ STRUCTURES ~~ ***/
-
-typedef struct s_buffer
-{
-	int			i;
-	char		buf[32];
-	char		str;
-}				t_buffer;
 
 /*** ~~ PROTOTYPES ~~ ***/
 
