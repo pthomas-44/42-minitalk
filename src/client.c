@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pthomas <pthomas@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:33:32 by pthomas           #+#    #+#             */
-/*   Updated: 2021/08/19 12:25:35 by pthomas          ###   ########lyon.fr   */
+/*   Updated: 2021/11/15 23:52:00 by dev              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
 void	send_char(char c, int pid)
 {
@@ -34,15 +34,15 @@ void	send_char(char c, int pid)
 	}
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	int		pid;
 	char	*str;
 
-	if (ac != 3)
+	if (argc != 3)
 		exit(-1);
-	pid = ft_atoi(av[1]);
-	str = av[2];
+	pid = ft_atoi(argv[1]);
+	str = argv[2];
 	while (*str)
 	{
 		send_char(*str, pid);

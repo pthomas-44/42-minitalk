@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pthomas <pthomas@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/08/19 12:31:39 by pthomas          ###   ########lyon.fr    #
+#    Updated: 2021/11/15 23:50:12 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,25 +21,25 @@ CLIENT		= client
 
 #~~~~ Paths ~~~~#
 
-PATH_INCS	=	includes
-PATH_SRCS	=	srcs
-PATH_OBJS	=	objs
+VPATH		=	src/
+PATH_INCS	=	include/
+PATH_OBJS	=	obj/
 
 #~~~~ Sources ~~~~#
 
 SRCS		= 	server.c \
 				client.c \
-				utils.c \
+				utils.c
 
 #~~~~ Objects ~~~~#
 
-OBJS		=	$(addprefix $(PATH_OBJS)/, $(SRCS:.c=.o))
+OBJS		=	$(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
 
 #~~~~ Includes ~~~~#
 
-INCS		=	$(addprefix $(PATH_INCS)/, minitalk.h)
+INCS		=	$(addprefix $(PATH_INCS), minitalk.h)
 
-#~~~~ Macros ~~~~#
+#~~~~ Compiler ~~~~#
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -55,23 +55,18 @@ all :		$(SERVER) $(CLIENT)
 bonus :		all
 
 $(SERVER) :	$(OBJS)
-			$(CC) $(CFLAGS) -I $(INCS) objs/server.o objs/utils.o -o $(SERVER)
+			$(CC) $(CFLAGS) obj/server.o obj/utils.o -o $(SERVER) -I $(PATH_INCS)
 
 $(CLIENT) :	$(OBJS)
-			$(CC) $(CFLAGS) -I $(INCS) objs/client.o objs/utils.o -o $(CLIENT)
+			$(CC) $(CFLAGS) obj/client.o obj/utils.o -o $(CLIENT) -I $(PATH_INCS)
 
 re :		fclean all
 
-#~~~~ Compilation Rules ~~~~#
+#~~~~ Compilation Rule ~~~~#
 
-$(PATH_OBJS)/%.o :	$(PATH_SRCS)/%.c $(INCS)
-					mkdir -p $(PATH_OBJS)
-					$(CC) $(CFLAGS) -O3 -I $(INCS) -c $< -o $@
-
-#~~~~ Norminette ~~~~#
-
-norminette :
-			norminette $(PATH_SRCS) $(PATH_INCS)
+$(PATH_OBJS)%.o :	%.c $(INCS)
+					@mkdir -p $(PATH_OBJS)
+					$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCS)
 
 #~~~~ Cleaning Rules ~~~~#
 
@@ -118,4 +113,4 @@ eugene :
 			@ echo "                7____,,..--'      /          |"
 			@ echo "                                  \`---.__,--.'"
 								  
-.PHONY:		all init bonus norminette clean fclean re eugene
+.PHONY:		all bonus clean fclean re eugene

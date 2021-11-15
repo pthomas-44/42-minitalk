@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pthomas <pthomas@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:33:28 by pthomas           #+#    #+#             */
-/*   Updated: 2021/08/19 12:25:31 by pthomas          ###   ########lyon.fr   */
+/*   Updated: 2021/11/15 23:47:40 by dev              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 #include <stdio.h>
 
 int	get_char(int sig, char *c)

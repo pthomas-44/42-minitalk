@@ -3,32 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pthomas <pthomas@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:19:12 by pthomas           #+#    #+#             */
-/*   Updated: 2021/08/19 12:25:32 by pthomas          ###   ########lyon.fr   */
+/*   Updated: 2021/11/15 23:57:03 by dev              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
 	i = 0;
-	while (s && s[i])
+	while (str[i])
 		i++;
 	return (i);
 }
 
-void	ft_bzero(void *b, size_t n)
+void	ft_bzero(void *dst, size_t len)
 {
-	char	*p;
+	void	*start;
 
-	p = b;
-	while (n--)
-		*p++ = 0;
+	start = dst;
+	while (len)
+	{
+		*(unsigned char *)dst = 0;
+		dst++;
+		len--;
+	}
 }
 
 void	ft_putnbr_fd(int n, int fd)
@@ -43,55 +47,49 @@ void	ft_putnbr_fd(int n, int fd)
 		nb = -nb;
 	}
 	if (nb > 9)
-	{
 		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);
-	}
-	else
-	{
-		c = nb + 48;
-		write(fd, &c, 1);
-	}
+	c = nb + 48;
+	write(fd, &c, 1);
 }
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	long	nb;
+	int		nb;
 	int		sign;
 
-	i = 0;
-	sign = 1;
 	nb = 0;
-	if (*str == '-')
-		sign = -1;
+	sign = 1;
 	if (*str == '-' || *str == '+')
-		str++;
-	while ('0' <= *str && *str <= '9')
 	{
-		nb = nb * 10 + *str - 48;
+		if (*str == '-')
+			sign = -1;
 		str++;
 	}
-	return ((int)sign * nb);
+	while ('0' <= *str && *str <= '9')
+	{
+		nb = nb * 10 + (*str - 48) * sign;
+		str++;
+	}
+	return (nb);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(const char *str1, const char *str2)
 {
 	int		i;
 	int		j;
-	char	*l;
+	char	*new;
 
 	i = 0;
 	j = 0;
-	l = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!l)
+	new = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
+	if (!new)
 		return (NULL);
-	while (s1 && s1[j])
-		l[i++] = s1[j++];
+	while (str1 && str1[j])
+		new[i++] = str1[j++];
 	j = 0;
-	while (s2 && s2[j])
-		l[i++] = s2[j++];
-	l[i] = '\0';
-	free((char *)s1);
-	return (l);
+	while (str2 && str2[j])
+		new[i++] = str2[j++];
+	new[i] = '\0';
+	free((char *)str1);
+	return (new);
 }
