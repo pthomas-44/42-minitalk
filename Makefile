@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/15 23:50:12 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 00:09:46 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,10 +55,10 @@ all :		$(SERVER) $(CLIENT)
 bonus :		all
 
 $(SERVER) :	$(OBJS)
-			$(CC) $(CFLAGS) obj/server.o obj/utils.o -o $(SERVER) -I $(PATH_INCS)
+			$(CC) $(CFLAGS) obj/server.o obj/utils.o -o $@ -I $(PATH_INCS)
 
 $(CLIENT) :	$(OBJS)
-			$(CC) $(CFLAGS) obj/client.o obj/utils.o -o $(CLIENT) -I $(PATH_INCS)
+			$(CC) $(CFLAGS) obj/client.o obj/utils.o -o $@ -I $(PATH_INCS)
 
 re :		fclean all
 
