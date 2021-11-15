@@ -1,6 +1,8 @@
 # Perso
 .vscode
 obj
+server
+client
 
 # Prerequisites
 *.d
