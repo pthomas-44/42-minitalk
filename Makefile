@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/16 14:10:45 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 14:11:22 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ INC			=	$(addprefix $(PATH_INC), minitalk.h)
 
 CC			=	gcc
 CFLAG		=	-Wall -Wextra -Werror
-INCLUDES	=	-I $(PATH_INC) -I $(PATH_LIBFT)$(PATH_INC)
+INCLUDES	=	-I $(PATH_INC)
 RM			=	rm -rf
 
 #========================================#
