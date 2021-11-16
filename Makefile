@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/16 13:40:00 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 13:40:38 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ SRCS		= 	server.c \
 				client.c \
 				utils.c
 
-OBJ		=	$(addprefix $(PATH_OBJ), $(SRCS:.c=.o))
+OBJ			=	$(addprefix $(PATH_OBJ), $(SRCS:.c=.o))
 
-INC		=	$(addprefix $(PATH_INC), minitalk.h)
+INC			=	$(addprefix $(PATH_INC), minitalk.h)
 
 #~~~~ Compiler ~~~~#
 
