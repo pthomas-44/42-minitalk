@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/16 13:57:04 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 14:10:45 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ INC			=	$(addprefix $(PATH_INC), minitalk.h)
 
 CC			=	gcc
 CFLAG		=	-Wall -Wextra -Werror
+INCLUDES	=	-I $(PATH_INC) -I $(PATH_LIBFT)$(PATH_INC)
 RM			=	rm -rf
 
 #========================================#
@@ -52,10 +53,10 @@ all :		$(SERVER) $(CLIENT)
 bonus :		all
 
 $(SERVER) :	$(OBJ)
-			$(CC) $(CFLAG) obj/server.o obj/utils.o -o $@ -I $(PATH_INC)
+			$(CC) $(CFLAG) obj/server.o obj/utils.o -o $@ $(INCLUDES)
 
 $(CLIENT) :	$(OBJ)
-			$(CC) $(CFLAG) obj/client.o obj/utils.o -o $@ -I $(PATH_INC)
+			$(CC) $(CFLAG) obj/client.o obj/utils.o -o $@ $(INCLUDES)
 
 re :		fclean all
 
@@ -63,7 +64,7 @@ re :		fclean all
 
 $(PATH_OBJ)%.o :	%.c $(INC)
 					@mkdir -p $(PATH_OBJ)
-					$(CC) $(CFLAG) -c $< -o $@ -I $(PATH_INC)
+					$(CC) $(CFLAG) -c $< -o $@ $(INCLUDES)
 
 #~~~~ Cleaning Rules ~~~~#
 
