@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/16 13:40:38 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 13:57:04 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ INC			=	$(addprefix $(PATH_INC), minitalk.h)
 #~~~~ Compiler ~~~~#
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAG		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 
 #========================================#
@@ -52,10 +52,10 @@ all :		$(SERVER) $(CLIENT)
 bonus :		all
 
 $(SERVER) :	$(OBJ)
-			$(CC) $(CFLAGS) obj/server.o obj/utils.o -o $@ -I $(PATH_INC)
+			$(CC) $(CFLAG) obj/server.o obj/utils.o -o $@ -I $(PATH_INC)
 
 $(CLIENT) :	$(OBJ)
-			$(CC) $(CFLAGS) obj/client.o obj/utils.o -o $@ -I $(PATH_INC)
+			$(CC) $(CFLAG) obj/client.o obj/utils.o -o $@ -I $(PATH_INC)
 
 re :		fclean all
 
@@ -63,7 +63,7 @@ re :		fclean all
 
 $(PATH_OBJ)%.o :	%.c $(INC)
 					@mkdir -p $(PATH_OBJ)
-					$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INC)
+					$(CC) $(CFLAG) -c $< -o $@ -I $(PATH_INC)
 
 #~~~~ Cleaning Rules ~~~~#
 
