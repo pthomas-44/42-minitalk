@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/16 13:38:32 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 13:40:00 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ INC		=	$(addprefix $(PATH_INC), minitalk.h)
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -rf
 
 #========================================#
 #=============== TARGETS ================#
@@ -67,10 +68,10 @@ $(PATH_OBJ)%.o :	%.c $(INC)
 #~~~~ Cleaning Rules ~~~~#
 
 clean :
-			$(RM) -r $(PATH_OBJ)
+			$(RM) $(PATH_OBJ)
 
 fclean :		
-			$(RM) -r $(PATH_OBJ) $(SERVER) $(CLIENT)
+			$(RM) $(PATH_OBJ) $(SERVER) $(CLIENT)
 
 #~~~~ Eugene ~~~~#
 
