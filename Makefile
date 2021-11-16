@@ -6,7 +6,7 @@
 #    By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 15:39:22 by mlokhate          #+#    #+#              #
-#    Updated: 2021/11/16 00:09:46 by dev              ###   ########lyon.fr    #
+#    Updated: 2021/11/16 13:38:32 by dev              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,22 +22,18 @@ CLIENT		= client
 #~~~~ Paths ~~~~#
 
 VPATH		=	src/
-PATH_INCS	=	include/
-PATH_OBJS	=	obj/
+PATH_INC	=	include/
+PATH_OBJ	=	obj/
 
-#~~~~ Sources ~~~~#
+#~~~~ Files ~~~~#
 
 SRCS		= 	server.c \
 				client.c \
 				utils.c
 
-#~~~~ Objects ~~~~#
+OBJ		=	$(addprefix $(PATH_OBJ), $(SRCS:.c=.o))
 
-OBJS		=	$(addprefix $(PATH_OBJS), $(SRCS:.c=.o))
-
-#~~~~ Includes ~~~~#
-
-INCS		=	$(addprefix $(PATH_INCS), minitalk.h)
+INC		=	$(addprefix $(PATH_INC), minitalk.h)
 
 #~~~~ Compiler ~~~~#
 
@@ -54,27 +50,27 @@ all :		$(SERVER) $(CLIENT)
 
 bonus :		all
 
-$(SERVER) :	$(OBJS)
-			$(CC) $(CFLAGS) obj/server.o obj/utils.o -o $@ -I $(PATH_INCS)
+$(SERVER) :	$(OBJ)
+			$(CC) $(CFLAGS) obj/server.o obj/utils.o -o $@ -I $(PATH_INC)
 
-$(CLIENT) :	$(OBJS)
-			$(CC) $(CFLAGS) obj/client.o obj/utils.o -o $@ -I $(PATH_INCS)
+$(CLIENT) :	$(OBJ)
+			$(CC) $(CFLAGS) obj/client.o obj/utils.o -o $@ -I $(PATH_INC)
 
 re :		fclean all
 
 #~~~~ Compilation Rule ~~~~#
 
-$(PATH_OBJS)%.o :	%.c $(INCS)
-					@mkdir -p $(PATH_OBJS)
-					$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INCS)
+$(PATH_OBJ)%.o :	%.c $(INC)
+					@mkdir -p $(PATH_OBJ)
+					$(CC) $(CFLAGS) -c $< -o $@ -I $(PATH_INC)
 
 #~~~~ Cleaning Rules ~~~~#
 
 clean :
-			$(RM) -r $(PATH_OBJS)
+			$(RM) -r $(PATH_OBJ)
 
 fclean :		
-			$(RM) -r $(PATH_OBJS) $(SERVER) $(CLIENT)
+			$(RM) -r $(PATH_OBJ) $(SERVER) $(CLIENT)
 
 #~~~~ Eugene ~~~~#
 

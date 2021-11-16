@@ -6,7 +6,7 @@
 /*   By: dev <dev@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:19:12 by pthomas           #+#    #+#             */
-/*   Updated: 2021/11/15 23:57:03 by dev              ###   ########lyon.fr   */
+/*   Updated: 2021/11/16 13:39:03 by dev              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ size_t	ft_strlen(const char *str)
 
 void	ft_bzero(void *dst, size_t len)
 {
-	void	*start;
-
-	start = dst;
 	while (len)
 	{
 		*(unsigned char *)dst = 0;
