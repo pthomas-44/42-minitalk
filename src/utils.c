@@ -6,7 +6,7 @@
 /*   By: pthomas <pthomas@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:19:12 by pthomas           #+#    #+#             */
-/*   Updated: 2021/11/16 15:03:56 by pthomas          ###   ########lyon.fr   */
+/*   Updated: 2021/11/22 11:48:42 by pthomas          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	if (nb > 9)
 		ft_putnbr_fd(nb / 10, fd);
-	c = nb + 48;
+	c = (nb % 10) + 48;
 	write(fd, &c, 1);
 }
 
@@ -64,10 +64,10 @@ int	ft_atoi(const char *str)
 	}
 	while ('0' <= *str && *str <= '9')
 	{
-		nb = nb * 10 + (*str - 48) * sign;
+		nb = nb * 10 + (*str - 48);
 		str++;
 	}
-	return (nb);
+	return (sign * nb);
 }
 
 char	*ft_strjoin(const char *str1, const char *str2)
